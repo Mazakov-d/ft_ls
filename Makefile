@@ -1,7 +1,7 @@
 NAME      = ft_ls
 
 CC        = cc
-CFLAGS    = -Wall -Werror -Wextra
+CFLAGS    = -Wall -Werror -Wextra -g3
 
 SRC_DIR   = src
 INC_DIR   = include
