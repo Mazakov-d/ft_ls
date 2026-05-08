@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/04 17:09:00 by dorianmazar       #+#    #+#             */
-/*   Updated: 2026/04/22 21:41:10 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/06 14:21:46 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,14 @@ void	*ft_calloc(size_t nmemb, size_t size);
 int		ft_atoi(const char *nptr);
 
 /* Printf*/
-int		ft_putchar(int c);
-int		ft_putstr(char *str);
-int		ft_putnbr_base(long n, char *base);
-int		ft_putn(int n);
-int		ft_put_p(unsigned long n, char *base, int i);
-int		ft_printf(const char *fmt, ...);
+int		ft_putnbr_base_fd(long n, char *base, int fd);
+int		ft_putn_fd(int n, int fd);
+int		ft_put_p_fd(unsigned long n, char *base, int i, int fd);
+int		ft_printf_fd(int fd, const char *fmt, ...);
 
 /* File Descriptor Output */
-void	ft_putchar_fd(char c, int fd);
-void	ft_putstr_fd(char *s, int fd);
+int		ft_putchar_fd(char c, int fd);
+int		ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 
