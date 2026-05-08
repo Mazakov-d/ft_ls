@@ -6,12 +6,15 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:05:04 by dorianmazar       #+#    #+#             */
-/*   Updated: 2026/04/22 21:47:14 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/06 14:17:44 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-void	ft_putstr_fd(char *s, int fd)
+
+int	ft_putstr_fd(char *str, int fd)
 {
-	write(fd, s, ft_strlen(s));
+	if (!str)
+		return (write(fd, "(null)", 6));
+	return (write(fd, str, ft_strlen(str)));
 }

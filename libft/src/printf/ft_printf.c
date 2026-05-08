@@ -6,41 +6,41 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 17:09:53 by dmazari           #+#    #+#             */
-/*   Updated: 2026/04/22 21:42:26 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/06 14:22:08 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_called_printf(char c, va_list ap)
+int	ft_called_printf(char c, va_list ap, int fd)
 {
 	if (c == 'c')
-		return (ft_putchar(va_arg(ap, int)));
+		return (ft_putchar_fd(va_arg(ap, int), fd));
 	if (c == 's')
-		return (ft_putstr(va_arg(ap, char *)));
+		return (ft_putstr_fd(va_arg(ap, char *), fd));
 	if (c == 'p')
-		return (ft_put_p(va_arg(ap, unsigned long), "0123456789abcdef", 0));
+		return (ft_put_p_fd(va_arg(ap, unsigned long), "0123456789abcdef", 0, fd));
 	if (c == 'd' || c == 'i')
-		return (ft_putn(va_arg(ap, int)));
+		return (ft_putn_fd(va_arg(ap, int), fd));
 	if (c == 'u')
-		return (ft_putnbr_base(va_arg(ap, unsigned int), "0123456789"));
+		return (ft_putnbr_base_fd(va_arg(ap, unsigned int), "0123456789", fd));
 	if (c == 'x')
-		return (ft_putnbr_base(va_arg(ap, unsigned int), "0123456789abcdef"));
+		return (ft_putnbr_base_fd(va_arg(ap, unsigned int), "0123456789abcdef", fd));
 	if (c == 'X')
-		return (ft_putnbr_base(va_arg(ap, unsigned int), "0123456789ABCDEF"));
+		return (ft_putnbr_base_fd(va_arg(ap, unsigned int), "0123456789ABCDEF", fd));
 	if (c == '%')
-		return (ft_putchar('%'));
+		return (ft_putchar_fd('%', fd));
 	return (-1);
 }
 
-int	ft_printf(const char *fmt, ...)
+int	ft_printf_fd(int fd, const char *fmt, ...)
 {
 	va_list	ap;
 	size_t	i;
 	int		count;
 	int		tmp;
 
-	if (write(1, 0, 0) == -1 || !fmt)
+	if (write(fd, 0, 0) == -1 || !fmt)
 		return (-1);
 	count = 0;
 	i = 0;
@@ -49,13 +49,13 @@ int	ft_printf(const char *fmt, ...)
 	{
 		if (fmt[i] == '%')
 		{
-			tmp = ft_called_printf(fmt[++i], ap);
+			tmp = ft_called_printf(fmt[++i], ap, fd);
 			if (tmp == -1)
 				return (va_end(ap), -1);
 			count += tmp;
 		}
 		else
-			count += ft_putchar(fmt[i]);
+			count += ft_putchar_fd(fmt[i], fd);
 		i++;
 	}
 	va_end(ap);
