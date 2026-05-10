@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:54:07 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 20:54:56 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 21:49:39 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,11 @@ void	fill_dirs_data(t_context *ctx, DIR *dir)
 				perror(NULL);
 			}
 			if (is_flag_set(ctx->flags_set, MR)
-				&& (ctx->args->token->s.st_mode & __S_IFMT) == __S_IFDIR)
+				&& (ctx->args->token->s.st_mode & __S_IFMT) == __S_IFDIR
+				&& ft_strncmp(ctx->args->token->name, ".", 2)
+				&& ft_strncmp(ctx->args->token->name, "..", 3))
 				if (add_arg_node(ctx->args,
-						create_path(ctx->args->name, entry->d_name)))
+						create_path(ctx->args->name, entry->d_name), is_flag_set(ctx->flags_set, R)))
 					free_ctx(ctx, 1, "malloc failed");
 			ctx->args->total += ctx->args->token->s.st_blocks;
 		}

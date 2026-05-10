@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 21:04:03 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:11:42 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 21:49:48 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ void	no_args_given(t_context *ctx);
 */
 
 int		new_arg(t_arg **curr);
-int		add_arg_node(t_arg *curr, char *name);
+int		add_arg_node(t_arg *curr, char *name, int reverse);
 void	remove_arg_node(t_arg **arg);
 t_arg	*get_first_arg(t_arg *curr);
 void	swap_adjacent_args(t_arg **head, t_arg *a, t_arg *b);

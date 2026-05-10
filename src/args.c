@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:52:35 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 20:52:48 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 21:53:06 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	parse_args(int ac, char **av, t_context *ctx)
 	i = 1;
 	while (i < ac)
 	{
-		if (av[i][0] == '-')
+		if (av[i][0] == '-' && av[i][1])
 			set_flags(av, ctx, i);
 		else
 		{
@@ -75,4 +75,5 @@ void	parse_args(int ac, char **av, t_context *ctx)
 	if (!ctx->args)
 		no_args_given(ctx);
 	ctx->args = get_first_arg(ctx->args);
+	bubble_sort_arg(&ctx->args, is_flag_set(ctx->flags_set, R));
 }
