@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:44:55 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:11:32 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/11 00:24:42 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,17 @@ void	bubble_sort_arg(t_arg **head, int reverse)
 	}
 }
 
+long	get_diff(int flag, t_token *curr)
+{
+	long	diff;
+
+	if (flag)
+		diff = time_cmp(curr->next, curr);
+	else
+		diff = ft_strcmp_ignore_dot(curr->name, curr->next->name);
+	return (diff);
+}
+
 void	bubble_sort_token(t_token **head, int flag, int reverse)
 {
 	int		swapped;
@@ -56,10 +67,7 @@ void	bubble_sort_token(t_token **head, int flag, int reverse)
 		curr = *head;
 		while (curr && curr->next)
 		{
-			if (flag)
-				diff = time_cmp(curr->next, curr);
-			else
-				diff = ft_strcmp_ignore_dot(curr->name, curr->next->name);
+			diff = get_diff(flag, curr);
 			if ((!reverse && diff > 0) || (reverse && diff < 0))
 			{
 				swap_adjacent_tokens(head, curr, curr->next);

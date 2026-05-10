@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:57:02 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:10:57 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/11 00:24:27 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,6 @@ int	time_cmp(t_token *t1, t_token *t2)
 	long	diff;
 
 	diff = t1->s.st_mtime - t2->s.st_mtime;
-	if (diff != 0)
-		return (diff);
-	diff = t1->s.st_size - t2->s.st_size;
 	if (diff != 0)
 		return (diff);
 	return (ft_strcmp_ignore_dot(t2->name, t1->name));

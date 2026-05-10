@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:51:45 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:08:33 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 22:49:18 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ void	free_args(t_arg *args)
 	{
 		if (args->name)
 			free(args->name);
+		args->sub_dir = get_first_arg(args->sub_dir);
+		free_args(args->sub_dir);
 		free_tokens(args->token);
 		save = args;
 		args = args->next;
@@ -62,7 +64,7 @@ void	free_ctx(t_context *ctx, int ret, char *error)
 {
 	if (error)
 		ft_printf_fd(2, "Error: %s\n", error);
-	if (ctx && ctx->args)
+	if (ctx)
 	{
 		rewind_ctx(ctx);
 		free_tokens(ctx->tokens);

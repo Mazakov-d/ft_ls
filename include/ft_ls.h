@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 21:04:03 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:49:48 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/11 00:24:19 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,7 @@ typedef struct s_arg
 	char			*name;
 	int				total;
 	t_token			*token;
+	struct s_arg	*sub_dir;
 	struct s_arg	*next;
 	struct s_arg	*prev;
 }	t_arg;
@@ -79,7 +80,7 @@ void	no_args_given(t_context *ctx);
 */
 
 int		new_arg(t_arg **curr);
-int		add_arg_node(t_arg *curr, char *name, int reverse);
+int		add_arg_node(t_arg **curr, char *name);
 void	remove_arg_node(t_arg **arg);
 t_arg	*get_first_arg(t_arg *curr);
 void	swap_adjacent_args(t_arg **head, t_arg *a, t_arg *b);
@@ -136,8 +137,8 @@ void	free_ctx(t_context *ctx, int ret, char *error);
 ** =========================
 */
 
-void	dir_parsing(t_context *ctx);
-void	fill_dirs_data(t_context *ctx, DIR *dir);
+void	dir_parsing(t_context *ctx, t_arg *arg);
+void	fill_dirs_data(t_context *ctx, t_arg *arg, DIR *dir);
 
 /*
 ** =========================

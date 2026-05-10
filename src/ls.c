@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:47:44 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:52:27 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 23:41:19 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_ls(t_context *ctx)
 				handle_file_as_arg(ctx, s);
 				continue ;
 			}
-			dir_parsing(ctx);
+			dir_parsing(ctx, ctx->args);
 		}
 		if (!ctx->args || !ctx->args->next)
 			break ;

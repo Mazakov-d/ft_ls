@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:50:06 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:50:03 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/11 00:11:11 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@ int	new_arg(t_arg **curr)
 	return (EXIT_SUCCESS);
 }
 
-int	add_arg_node(t_arg *curr, char *name, int reverse)
+int	add_arg_node(t_arg **curr, char *name)
 {
 	t_arg	*new;
+	t_arg	*save;
 
 	if (!name)
 		return (EXIT_FAILURE);
@@ -41,15 +42,15 @@ int	add_arg_node(t_arg *curr, char *name, int reverse)
 		return (EXIT_FAILURE);
 	}
 	new->name = name;
-	if (curr)
+	if (curr && *curr)
 	{
-		if (curr->next)
-			curr->next->prev = new;
-		new->prev = curr;
-		new->next = curr->next;
-		curr->next = new;
-		bubble_sort_arg(&curr->next, reverse);
+		save = *curr;
+		while (save->next)
+			save = save->next;
+		save->next = new;
+		new->prev = save;
 	}
+	*curr = new;
 	return (EXIT_SUCCESS);
 }
 
