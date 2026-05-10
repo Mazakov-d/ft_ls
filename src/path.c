@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   path.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/10 20:50:34 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 20:51:05 by mazakov          ###   ########.fr       */
+/*   Created: 2026/05/10 20:44:24 by mazakov           #+#    #+#             */
+/*   Updated: 2026/05/10 20:44:47 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 
-int	main(int ac, char **av)
+char	*create_path(char *dir, char *file)
 {
-	t_context	ctx;
+	char	*path;
+	int		i;
+	int		j;
 
-	ctx.args = NULL;
-	ctx.tokens = NULL;
-	ctx.flags_set = 0;
-	parse_args(ac, av, &ctx);
-	ft_ls(&ctx);
-	free_ctx(&ctx, 0, NULL);
+	path = malloc(sizeof(char) * (ft_strlen(dir) + ft_strlen(file) + 2));
+	if (!path)
+		return (NULL);
+	i = -1;
+	while (dir && dir[++i])
+		path[i] = dir[i];
+	if (i > 0 && path[i - 1] != '/')
+	{
+		path[i] = '/';
+		i++;
+	}
+	j = -1;
+	while (file && file[++j])
+		path[i + j] = file[j];
+	path[i + j] = '\0';
+	return (path);
 }

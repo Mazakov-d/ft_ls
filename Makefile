@@ -13,7 +13,9 @@ LIBFT     = $(LIBFT_DIR)/libft.a
 vpath %.c $(SRC_DIR)
 vpath %.h $(INC_DIR) libft/
 
-SRC_FILES  = main.c
+SRC_FILES  = main.c arg_list.c args.c context.c directory.c \
+						display.c ls.c path.c print_long_format.c print_utils.c \
+						sorting.c token_list.c 
 
 OBJS      := $(addprefix $(OBJ_DIR)/, $(SRC_FILES:.c=.o))
 
