@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:43:32 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:52:41 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 21:59:45 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,8 @@ void	ls_print(t_context *ctx)
 		if (ctx->args->token)
 		{
 			sort_tokens(&ctx->args->token, ctx->flags_set);
-			if (ctx->args->next || ctx->args->prev)
+			if (ctx->args->next || ctx->args->prev
+				|| is_flag_set(ctx->flags_set, MR))
 				ft_printf_fd(1, "%s:\n", ctx->args->name);
 			if (is_flag_set(ctx->flags_set, L))
 				ft_printf_fd(1, "total %d\n", ctx->args->total / 2);
