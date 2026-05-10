@@ -6,11 +6,12 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 12:09:56 by dorianmazar       #+#    #+#             */
-/*   Updated: 2026/04/22 21:47:14 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 20:58:47 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 void	ft_putendl_fd(char *s, int fd)
 {
 	ft_putstr_fd(s, fd);

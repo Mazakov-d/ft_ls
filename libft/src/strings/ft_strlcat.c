@@ -6,11 +6,12 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/06 11:31:15 by dmazari           #+#    #+#             */
-/*   Updated: 2026/04/22 21:47:14 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 21:04:38 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
 	size_t	i_dst;

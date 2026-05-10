@@ -6,11 +6,12 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:11:44 by dmazari           #+#    #+#             */
-/*   Updated: 2026/04/22 21:47:14 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 21:02:13 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char	*ft_strjoin(char const *s1, char const *s2)
 {
 	size_t	i;

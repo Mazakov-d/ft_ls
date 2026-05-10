@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/13 17:09:53 by dmazari           #+#    #+#             */
-/*   Updated: 2026/05/06 14:22:08 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 20:58:36 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,18 @@ int	ft_called_printf(char c, va_list ap, int fd)
 	if (c == 's')
 		return (ft_putstr_fd(va_arg(ap, char *), fd));
 	if (c == 'p')
-		return (ft_put_p_fd(va_arg(ap, unsigned long), "0123456789abcdef", 0, fd));
+		return (ft_put_p_fd(va_arg(ap, unsigned long),
+				"0123456789abcdef", 0, fd));
 	if (c == 'd' || c == 'i')
 		return (ft_putn_fd(va_arg(ap, int), fd));
 	if (c == 'u')
 		return (ft_putnbr_base_fd(va_arg(ap, unsigned int), "0123456789", fd));
 	if (c == 'x')
-		return (ft_putnbr_base_fd(va_arg(ap, unsigned int), "0123456789abcdef", fd));
+		return (ft_putnbr_base_fd(va_arg(ap, unsigned int),
+				"0123456789abcdef", fd));
 	if (c == 'X')
-		return (ft_putnbr_base_fd(va_arg(ap, unsigned int), "0123456789ABCDEF", fd));
+		return (ft_putnbr_base_fd(va_arg(ap, unsigned int),
+				"0123456789ABCDEF", fd));
 	if (c == '%')
 		return (ft_putchar_fd('%', fd));
 	return (-1);

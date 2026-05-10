@@ -6,11 +6,12 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/07 17:03:45 by dmazari           #+#    #+#             */
-/*   Updated: 2026/04/22 21:47:14 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 21:04:44 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
 char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	char	*str;
