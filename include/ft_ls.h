@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 21:04:03 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/11 00:24:19 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/11 01:02:38 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,14 @@
 # include <pwd.h>
 # include <grp.h>
 # include <time.h>
+
+# define RESET   "\033[0m"
+# define BLUE    "\033[34m"
+# define GREEN   "\033[32m"
+# define CYAN    "\033[36m"
+# define MAGENTA "\033[35m"
+# define YELLOW  "\033[33m"
+# define RED     "\033[31m"
 
 enum e_flags
 {

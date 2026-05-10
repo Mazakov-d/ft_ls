@@ -6,11 +6,29 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:43:32 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/11 00:23:39 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/11 01:05:26 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+
+void	get_color(struct stat st)
+{
+	if (S_ISDIR(st.st_mode))
+		ft_printf_fd(1, BLUE);
+	else if (S_ISLNK(st.st_mode))
+		ft_printf_fd(1, CYAN);
+	else if (S_ISFIFO(st.st_mode))
+		ft_printf_fd(1, YELLOW);
+	else if (S_ISSOCK(st.st_mode))
+		ft_printf_fd(1, MAGENTA);
+	else if (S_ISCHR(st.st_mode) || S_ISBLK(st.st_mode))
+		ft_printf_fd(1, YELLOW);
+	else if (st.st_mode & S_IXUSR)
+		ft_printf_fd(1, GREEN);
+	else
+		ft_printf_fd(1, RESET);
+}
 
 void	token_print(t_token *tokens, short flags_set, t_arg *args)
 {
@@ -20,7 +38,10 @@ void	token_print(t_token *tokens, short flags_set, t_arg *args)
 			ft_printf_fd(1, "%d ", tokens->s.st_ino);
 		if (is_flag_set(flags_set, L))
 			print_l_flag(tokens->s);
+		if (tokens->s.st_mode)
+			get_color(tokens->s);
 		ft_printf_fd(1, "%s", tokens->name);
+		ft_printf_fd(1, RESET);
 		if (!tokens->next)
 		{
 			ft_printf_fd(1, "\n");
