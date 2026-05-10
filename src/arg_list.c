@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:50:06 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 20:50:07 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 21:50:03 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	new_arg(t_arg **curr)
 	return (EXIT_SUCCESS);
 }
 
-int	add_arg_node(t_arg *curr, char *name)
+int	add_arg_node(t_arg *curr, char *name, int reverse)
 {
 	t_arg	*new;
 
@@ -48,6 +48,7 @@ int	add_arg_node(t_arg *curr, char *name)
 		new->prev = curr;
 		new->next = curr->next;
 		curr->next = new;
+		bubble_sort_arg(&curr->next, reverse);
 	}
 	return (EXIT_SUCCESS);
 }

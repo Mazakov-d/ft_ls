@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:43:32 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:11:09 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/05/10 21:52:41 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	token_print(t_token *tokens, short flags_set, t_arg *args)
 void	ls_print(t_context *ctx)
 {
 	ctx->args = get_first_arg(ctx->args);
-	bubble_sort_arg(&ctx->args, is_flag_set(ctx->flags_set, R));
 	sort_tokens(&ctx->tokens, ctx->flags_set);
 	token_print(ctx->tokens, ctx->flags_set, ctx->args);
 	while (ctx->args)
