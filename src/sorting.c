@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
+/*   By: dmazari <dmazari@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:44:55 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/11 00:24:42 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/06/10 13:32:56 by dmazari          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ int	ft_strcmp_ignore_dot(const char *s1, const char *s2)
 		i++;
 	while (s2[j] && s2[j] == '.')
 		j++;
+	if (!s1[i] && !s2[j])
+		return (i - j);
 	while (s1[i] && ft_tolower(s1[i]) == ft_tolower(s2[j]))
 	{
 		i++;
