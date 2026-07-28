@@ -6,7 +6,7 @@
 /*   By: mazakov <mazakov@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/10 20:52:35 by mazakov           #+#    #+#             */
-/*   Updated: 2026/05/10 21:53:06 by mazakov          ###   ########.fr       */
+/*   Updated: 2026/07/28 15:23:09 by mazakov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,11 @@ void	set_flags(char **av, t_context *ctx, int i)
 			set_bit(&ctx->flags_set, T);
 		else if (av[i][j] == 'i')
 			set_bit(&ctx->flags_set, I);
+		else
+		{
+			ft_printf_fd(2, "ft_ls: invalid option -- '%c'\n", av[i][j]);
+			free_ctx(ctx, 1, NULL);
+		}
 	}
 }
 
@@ -61,7 +66,7 @@ void	parse_args(int ac, char **av, t_context *ctx)
 	while (i < ac)
 	{
 		if (av[i][0] == '-' && av[i][1])
-			set_flags(av, ctx, i);
+      set_flags(av, ctx, i);
 		else
 		{
 			if (new_arg(&ctx->args))
